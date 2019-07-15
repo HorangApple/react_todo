@@ -1,10 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
+const Btn = styled.button`
+
+`
+
 const Button = () => (
-  <button>
+  <Btn>
     Button
-  </button>
+  </Btn>
 )
 
 export default Button

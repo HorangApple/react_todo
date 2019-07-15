@@ -10,11 +10,12 @@ const Page = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-top : 20px;
-  padding : 15px 10px 15px 10px;
+  padding : 15px 20px 15px 20px;
+  background-color: #efe5fd;
 `
 
 const Title = styled.h1`
-  ${shadow(6)}
+  ${shadow(4)}
   text-align: center;
   background-color: #673ab7;
   color: white;
@@ -22,6 +23,7 @@ const Title = styled.h1`
   margin-right: auto;
   width: 200px;
   height: 60px;
+  line-height: 60px;
 `
 
 const TodoPage = () => {

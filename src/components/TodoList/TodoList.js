@@ -3,13 +3,14 @@ import styled from "styled-components";
 
 import Todo from "components/Todo";
 import Button from "components/Button";
+import shadow from "style/shadow"
 
 const Menu = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-const ListBody = styled.div`
+const Todos = styled.div`
   margin-top: 20px;
 `
 
@@ -21,10 +22,10 @@ class TodoList extends Component {
           <p>할 일 / 했던 일</p>
           <Button>추가</Button>
         </Menu>
-        <ListBody>
+        <Todos>
           <Todo />
           <Todo />
-        </ListBody>
+        </Todos>
       </div>
     );
   }
