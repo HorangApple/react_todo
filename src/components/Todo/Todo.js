@@ -12,6 +12,7 @@ const Body = styled.div`
   height: 2rem;
   padding: 10px 10px 10px 10px;
   vertical-align:middle;
+  overflow:auto;
 `
 
 const CheckBox = styled.input`
@@ -36,15 +37,10 @@ const Delete = styled.button`
   }
 `
 
-class Todo extends Component {
-
-  render() {
-    return (
-      <Body>
-        <CheckBox type="checkbox" id="k"/><Label for="k">쿨쿨잠 자고 싶다, 쿨쿨</Label><Delete><FontAwesomeIcon icon={faTrash} /></Delete>
-      </Body>
-    )
-  }
-} 
+const Todo = () =>(
+  <Body>
+    <CheckBox type="checkbox" id="k"/><Label for="k">쿨쿨잠 자고 싶다, 쿨쿨</Label><Delete><FontAwesomeIcon icon={faTrash} /></Delete>
+  </Body>
+)
 
 export default Todo
