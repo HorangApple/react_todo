@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import TodoList from 'components/TodoList'
+import TodoInputContainer from 'containers/TodoInputContainer'
 import shadow from 'style/shadow'
 
 const Page = styled.div`
@@ -30,6 +31,7 @@ const TodoPage = () => {
   return (
     <Page>
       <Title>My Todo</Title>
+      <TodoInputContainer />
       <TodoList></TodoList>
     </Page>
   )

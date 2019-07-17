@@ -39,7 +39,7 @@ const Delete = styled.button`
 
 const Todo = () =>(
   <Body>
-    <CheckBox type="checkbox" id="k"/><Label for="k">쿨쿨잠 자고 싶다, 쿨쿨</Label><Delete><FontAwesomeIcon icon={faTrash} /></Delete>
+    <CheckBox type="checkbox" id="k"/><Label htmlFor="k">쿨쿨잠 자고 싶다, 쿨쿨</Label><Delete><FontAwesomeIcon icon={faTrash} /></Delete>
   </Body>
 )
 

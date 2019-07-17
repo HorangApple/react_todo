@@ -32,8 +32,8 @@ const Btn = styled.button`
   }
 `
 
-const CircleButton = (props) => (
-  <Btn onClick={props.func}>
+const CircleButton = ({handleClick}) => (
+  <Btn onClick={handleClick}>
     +
   </Btn>
 )

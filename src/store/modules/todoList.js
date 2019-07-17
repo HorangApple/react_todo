@@ -12,6 +12,8 @@ export const writeTodo = createAction(WRITE_TODO)
 export const removeTodo = createAction(REMOVE_TODO)
 export const doneTodo = createAction(DONE_TODO)
 
+let idx = 2;
+
 // 초기 상태 정의
 const initialState = List([
   Map({
@@ -30,10 +32,11 @@ const initialState = List([
 export default handleActions({
   [INITIALIZE]: (state, action) => initialState,
   [WRITE_TODO]:(state, action) => {
-    const { id, content, done } = action.payload
+    const { content } = action.payload
+    idx+=1
     return state.push(Map({
-      id,
-      done,
+      id:idx,
+      done:false,
       content
     }))
   },
