@@ -1,5 +1,5 @@
 import { createAction, handleActions } from "redux-actions";
-import { Map, List, remove } from "immutable";
+import { Map, List } from "immutable";
 
 const WRITE_TODO = "todoList/WRITE_TODO";
 const INITIALIZE = "todoList/INITIALIZE";
@@ -45,14 +45,12 @@ export default handleActions(
     },
     [DONE_TODO]: (state, action) => {
       const { id } = action.payload;
-      return state.updateIn([id, "done"], done => !done);
+      let target = state.findIndex(function(obj){return obj.get('id') === +id;})
+      return state.updateIn([target,'done'], done=>!done)
     },
     [REMOVE_TODO]: (state, action) => {
-      console.log(action.payload.index)
       const { id } = action.payload;
-      const removedState = state.filterNot(x=>x.get('id')===+id)
-      state=removedState
-      return state
+      return state.filterNot(x=>x.get('id')===+id)
     }
   },
   initialState
