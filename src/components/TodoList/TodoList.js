@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import Todo from "components/Todo";
@@ -13,17 +13,14 @@ const Todos = styled.div`
   margin-right: auto;
 `
 
-class TodoList extends Component {
-  render() {
-    return (
-      <Body>
-        <Todos>
-          <Todo />
-          <Todo />
-        </Todos>
-      </Body>
-    );
-  }
+const TodoList = ({list,handleCheck,handleDelete}) => {
+  return (
+    <Body>
+      <Todos>
+        {list.map(todo=><Todo {...todo} handleCheck={handleCheck} handleDelete={handleDelete} key={todo.id}/>)}
+      </Todos>
+    </Body>
+  )
 }
 
 export default TodoList;

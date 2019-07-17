@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import TodoList from 'components/TodoList'
 import TodoInputContainer from 'containers/TodoInputContainer'
+import TodoListContainer from 'containers/TodoListContainer'
 import shadow from 'style/shadow'
 
 const Page = styled.div`
@@ -32,7 +32,7 @@ const TodoPage = () => {
     <Page>
       <Title>My Todo</Title>
       <TodoInputContainer />
-      <TodoList></TodoList>
+      <TodoListContainer />
     </Page>
   )
 }

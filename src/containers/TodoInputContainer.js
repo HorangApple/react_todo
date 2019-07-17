@@ -15,8 +15,9 @@ class TodoInputContainer extends Component {
 
   handleClick = () => {
     const {content} = this.props
-    const {ListActions} = this.props
+    const {ListActions, InputActions} = this.props
     ListActions.writeTodo({content})
+    InputActions.initialize()
   }
 
   render(){

@@ -1,51 +1,59 @@
-import { createAction, handleActions } from 'redux-actions'
-import { Map, List } from 'immutable'
+import { createAction, handleActions } from "redux-actions";
+import { Map, List, remove } from "immutable";
 
-const WRITE_TODO = 'todoList/WRITE_TODO'
-const INITIALIZE = 'todoList/INITIALIZE'
-const REMOVE_TODO = 'todoList/REMOVE_TODO'
-const DONE_TODO = 'todoList/DONE_TODO'
+const WRITE_TODO = "todoList/WRITE_TODO";
+const INITIALIZE = "todoList/INITIALIZE";
+const REMOVE_TODO = "todoList/REMOVE_TODO";
+const DONE_TODO = "todoList/DONE_TODO";
 
 // 액션 생성자
-export const initialize = createAction(INITIALIZE)
-export const writeTodo = createAction(WRITE_TODO)
-export const removeTodo = createAction(REMOVE_TODO)
-export const doneTodo = createAction(DONE_TODO)
+export const initialize = createAction(INITIALIZE);
+export const writeTodo = createAction(WRITE_TODO);
+export const removeTodo = createAction(REMOVE_TODO);
+export const doneTodo = createAction(DONE_TODO);
 
-let idx = 2;
+let idx = 1;
 
 // 초기 상태 정의
 const initialState = List([
   Map({
-    id:1,
+    id: 0,
     done: false,
     content: "집 간다"
   }),
   Map({
-    id:2,
+    id: 1,
     done: false,
     content: "밥 먹자"
-  }),  
-])
+  })
+]);
 
 // reducer
-export default handleActions({
-  [INITIALIZE]: (state, action) => initialState,
-  [WRITE_TODO]:(state, action) => {
-    const { content } = action.payload
-    idx+=1
-    return state.push(Map({
-      id:idx,
-      done:false,
-      content
-    }))
+export default handleActions(
+  {
+    [INITIALIZE]: (state, action) => initialState,
+    [WRITE_TODO]: (state, action) => {
+      const { content } = action.payload;
+      idx += 1;
+      return state.push(
+        Map({
+          id: idx,
+          done: false,
+          content
+        })
+      );
+    },
+    [DONE_TODO]: (state, action) => {
+      const { id } = action.payload;
+      return state.updateIn([id, "done"], done => !done);
+    },
+    [REMOVE_TODO]: (state, action) => {
+      console.log(action.payload.index)
+      const { id } = action.payload;
+      const removedState = state.filterNot(x=>x.get('id')===+id)
+      state=removedState
+      return state
+    }
   },
-  [DONE_TODO]: (state, action) => {
-    const { id } = action.payload
-    return state.updateIn([id,'done'], done=>!done)
-  },
-  [REMOVE_TODO]: (state, action) => {
-    const { id } = action.payload
-    return state.delete(id)
-  }
-}, initialState)
+  initialState
+);
