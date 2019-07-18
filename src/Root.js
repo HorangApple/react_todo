@@ -1,11 +1,15 @@
 import React from 'react'
+import {Provider} from 'react-redux'
 
 import App from 'components/App'
+import store from 'store/store'
 
 const Root = () => {
 
   return (
-    <App></App>
+    <Provider store = {store}>
+      <App></App>
+    </Provider>
   )
 }
 
