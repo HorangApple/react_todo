@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import TodoInputContainer from 'containers/TodoInputContainer'
 import TodoListContainer from 'containers/TodoListContainer'
-import Footer from 'components/Footer'
+import FooterContainer from 'containers/FooterContainer'
 import shadow from 'style/shadow'
 
 const Page = styled.div`
@@ -34,7 +34,7 @@ const TodoPage = () => {
       <Title>My Todo</Title>
       <TodoInputContainer />
       <TodoListContainer />
-      <Footer />
+      <FooterContainer />
     </Page>
   )
 }

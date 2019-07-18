@@ -3,11 +3,11 @@ import "firebase/auth";
 import "firebase/database";
 
 const firebaseConfig = {
-// add key
+  // 키값
 };
 
 firebase.initializeApp(firebaseConfig);
 
 const provider = new firebase.auth.GoogleAuthProvider();
-export const login = firebase.auth().signInWithPopup(provider)
-export const logout = firebase.auth().signOut()
+export const login = () => (firebase.auth().signInWithPopup(provider))
+export const logout = () => (firebase.auth().signOut())

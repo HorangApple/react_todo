@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import shadow from 'style/shadow'
 
-const Body = styled.button`
+const Btn = styled.button`
   ${shadow(3)}
   background-color:#8e24aa;
   color:white;
@@ -24,11 +24,11 @@ const Body = styled.button`
   }
 `
 
-const LoginButton = () => {
+const LoginButton = ({clickLogin}) => {
   return (
-    <Body>
+    <Btn onClick={clickLogin}>
       로그인
-    </Body>
+    </Btn>
   )
 }
 

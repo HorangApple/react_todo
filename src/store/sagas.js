@@ -1,15 +1,27 @@
-import { call, put, takeEvery, takeLatest, all } from 'redux-saga/effects'
+import { takeEvery, all, put  } from 'redux-saga/effects'
+import { login, logout } from 'api/firebaseApi'
 
-function* deleteTodo (){
-  console.log('delete!')
+function* accesslogin (){
+  const response = yield login()
+  yield put({type:"login/SAVEUSER", data:response.user})
 }
 
-function* watchDelete() {
-  yield takeEvery('todoList/REMOVE_TODO', deleteTodo)
+function* accesslogout(){
+  yield logout()
+}
+
+// watcher
+function* watchLogin() {
+  yield takeEvery('login/LOGIN', accesslogin)
+}
+
+function* watchLogout() {
+  yield takeEvery('login/LOGOUT', accesslogout)
 }
 
 export default function* rootSaga() {
   yield all([
-    watchDelete()
+    watchLogin(),
+    watchLogout()
   ])
 }

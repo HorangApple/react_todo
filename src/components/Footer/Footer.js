@@ -9,10 +9,12 @@ const Body = styled.div`
   justify-content:center;
 `
 
-const Footer = () =>(
-  <Body>
-    <LoginButton />
-  </Body>
-)
+const Footer = ({clickLogin}) =>{
+  return(
+    <Body>
+      <LoginButton clickLogin={clickLogin}/>
+    </Body>
+  )
+}
 
 export default Footer
