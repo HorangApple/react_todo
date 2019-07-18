@@ -25,9 +25,9 @@ Firebase의 auth와 database 제품을 통해 계정마다의 Todo를 저장할 
 ## 3. 기능 명세
 ### 기본
 
-- [ ] page -> TodoList -> Todo 순으로 styled-components를 활용하며 개발한다.
+- [x] page -> TodoList -> Todo 순으로 styled-components를 활용하며 개발한다.
 
-- [ ] redux를 활용하여 Todo의 완료 여부 상태를 관리하도록 구현한다.
+- [x] redux를 활용하여 Todo의 완료 여부 상태를 관리하도록 구현한다.
 - [ ] Todo가 완료 될 때, 애니메이션과 효과음을 구현한다.
 - [ ] Firebase로 이메일 계정 로그인, 구글 ID 로그인 기능을 구현한다.
 - [ ] 계정마다 작성한 Todo를 Firebase의 database에 저장하기
@@ -42,7 +42,8 @@ Firebase의 auth와 database 제품을 통해 계정마다의 Todo를 저장할 
 
 - React
 - React-redux
-- styled-components
+- React-actions
+- Styled-components
 - Firebase - auth
 - FIrebase - database
 
