@@ -19,12 +19,12 @@ const initialState = List([
   Map({
     id: 0,
     done: false,
-    content: "집 간다"
+    content: "반갑습니다."
   }),
   Map({
     id: 1,
     done: false,
-    content: "밥 먹자"
+    content: "오늘 할 일을 작성해주세요."
   })
 ]);
 
