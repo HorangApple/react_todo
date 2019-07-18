@@ -51,3 +51,9 @@ Firebase의 auth와 database 제품을 통해 계정마다의 Todo를 저장할 
 ## 5. 참고
 - material-design-shadows
   - https://gist.github.com/serglo/f9f0be9a66fd6755a0bda85f9c64e85f
+
+- 왜 리덕스 사가(Redux-saga) 인가?
+  - https://gracefullight.dev/2017/12/06/Why-redux-saga/
+
+- Redux-saga 공식 한글 번역 문서
+  - https://mskims.github.io/redux-saga-in-korean/
