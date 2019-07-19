@@ -10,15 +10,23 @@ class FooterContainer extends Component {
     const {LoginActions} = this.props
     LoginActions.login()
   }
+  clickLogout = () => {
+    const {LoginActions} = this.props
+    LoginActions.logout()
+  }
+  
   render() {
+    const {user} = this.props
     return (
-      <Footer clickLogin={this.clickLogin}/>
+      <Footer clickLogin={this.clickLogin} clickLogout={this.clickLogout} user={user}/>
     )
   }
 }
 
 export default connect(
-  null,
+  (state) => ({
+    user: state.login.get("user"),
+  }),
   (dispatch) => ({
     LoginActions : bindActionCreators(loginActions,dispatch)
   })

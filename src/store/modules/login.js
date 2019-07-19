@@ -8,19 +8,24 @@ const DELETEUSER = 'login/DELETEUSER'
 
 export const login = createAction(LOGIN)
 export const logout = createAction(LOGOUT)
+export const saveUser = createAction(SAVEUSER)
 
 const initialState = Map({
   user:"",
-  token:""
+  token:"",
+  uid:""
 })
 
 export default handleActions({
   [SAVEUSER]: (state, action) =>{
-    const {email,refreshToken} = action.data
+    const {email,refreshToken,uid} = action.payload
     return state.set('user',email)
                 .set('token',refreshToken)
+                .set('uid',uid)
   },
   [DELETEUSER]: (state, action)=>{
-    console.log(action)
+    return state.set('user','')
+                .set('token','')
+                .set('uid','')
   }
 },initialState)

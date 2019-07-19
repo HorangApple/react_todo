@@ -5,7 +5,7 @@ import shadow from 'style/shadow'
 
 const Btn = styled.button`
   ${shadow(3)}
-  background-color:#8e24aa;
+  background-color:${props=>props.user===""? '#8e24aa' :'#b71c1c'};
   color:white;
   border-width:0;
   padding: 5px 10px 5px 10px;
@@ -14,7 +14,7 @@ const Btn = styled.button`
   transition: 0.2s;
   &:hover {
     cursor: pointer;
-    background-color: #c158dc;
+    background-color: ${props=>props.user===""? '#c158dc' :'#f05545'};
     ${shadow(4)}
   }
 
@@ -24,10 +24,10 @@ const Btn = styled.button`
   }
 `
 
-const LoginButton = ({clickLogin}) => {
+const LoginButton = ({user,clickLogin,clickLogout}) => {
   return (
-    <Btn onClick={clickLogin}>
-      로그인
+    <Btn onClick={user==="" ? clickLogin: clickLogout} user={user}>
+      {user===""? '로그인': '로그아웃'}
     </Btn>
   )
 }

@@ -9,10 +9,10 @@ const Body = styled.div`
   justify-content:center;
 `
 
-const Footer = ({clickLogin}) =>{
+const Footer = (data) =>{
   return(
     <Body>
-      <LoginButton clickLogin={clickLogin}/>
+      <LoginButton {...data}/>
     </Body>
   )
 }

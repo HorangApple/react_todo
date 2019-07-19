@@ -3,7 +3,7 @@ import "firebase/auth";
 import "firebase/database";
 
 const firebaseConfig = {
-  // 키값
+  // key value
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -11,3 +11,4 @@ firebase.initializeApp(firebaseConfig);
 const provider = new firebase.auth.GoogleAuthProvider();
 export const login = () => (firebase.auth().signInWithPopup(provider))
 export const logout = () => (firebase.auth().signOut())
+export const setLoginState = (func)=>(firebase.auth().onAuthStateChanged(func))

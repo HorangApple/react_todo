@@ -4,6 +4,8 @@ import logger from 'redux-logger'
 
 import rootSaga from 'store/sagas'
 import modules from 'store/modules'
+import {setLoginState} from 'api/firebaseApi'
+import * as loginActions from 'store/modules/login'
 
 const sagaMiddleware = createSagaMiddleware()
 const middlewares = [sagaMiddleware,logger]
@@ -14,6 +16,12 @@ const devtools = isDev && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_
 const store = createStore(
   modules, compose(applyMiddleware(...middlewares),devtools)
 )
+
+setLoginState((firebaseUser)=>{
+  if(firebaseUser){
+    store.dispatch(loginActions.saveUser(firebaseUser))
+  }
+})
 
 sagaMiddleware.run(rootSaga)
 
