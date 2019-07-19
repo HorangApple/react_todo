@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import TodoInputContainer from 'containers/TodoInputContainer'
 import TodoListContainer from 'containers/TodoListContainer'
+import FooterContainer from 'containers/FooterContainer'
 import shadow from 'style/shadow'
 
 const Page = styled.div`
@@ -11,7 +12,7 @@ const Page = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-top : 20px;
-  padding : 15px 20px 35px 20px;
+  padding : 15px 20px 15px 20px;
   background-color: #efe5fd;
 `
 
@@ -33,6 +34,7 @@ const TodoPage = () => {
       <Title>My Todo</Title>
       <TodoInputContainer />
       <TodoListContainer />
+      <FooterContainer />
     </Page>
   )
 }
