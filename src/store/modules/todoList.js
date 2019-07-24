@@ -12,8 +12,6 @@ export const writeTodo = createAction(WRITE_TODO);
 export const removeTodo = createAction(REMOVE_TODO);
 export const doneTodo = createAction(DONE_TODO);
 
-let idx = 1;
-
 // 초기 상태 정의
 const initialState = List([
   Map({
@@ -35,11 +33,10 @@ export default handleActions(
   {
     [INITIALIZE]: (state, action) => initialState,
     [WRITE_TODO]: (state, action) => {
-      const { content, done, created_at } = action.payload;
-      idx += 1;
+      const { content, done, created_at, id } = action.payload;
       return state.push(
         Map({
-          id: idx,
+          id,
           done,
           content,
           created_at
@@ -48,12 +45,12 @@ export default handleActions(
     },
     [DONE_TODO]: (state, action) => {
       const { id } = action.payload;
-      let target = state.findIndex(function(obj){return obj.get('id') === +id;})
+      let target = state.findIndex(function(obj){return obj.get('id') === id;})
       return state.updateIn([target,'done'], done=>!done)
     },
     [REMOVE_TODO]: (state, action) => {
       const { id } = action.payload;
-      return state.filterNot(x=>x.get('id')===+id)
+      return state.filterNot(x=>x.get('id')===id)
     }
   },
   initialState

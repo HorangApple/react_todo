@@ -6,6 +6,9 @@ import * as inputActions from 'store/modules/todoInput'
 import * as listActions from 'store/modules/todoList'
 import TodoInput from 'components/TodoInput'
 
+import firebase from 'firebase';
+import { getTodoId } from 'api/firebaseApi'
+
 class TodoInputContainer extends Component {
   handleInput = (e) => {
     const content = e.target.value
@@ -18,7 +21,9 @@ class TodoInputContainer extends Component {
     if (content!==""){
       const {ListActions, InputActions} = this.props
       const created_at = new Date()
-      ListActions.writeTodo({content,created_at,done:false})
+      const user = firebase.auth().currentUser.email
+      const id = getTodoId(user).id
+      ListActions.writeTodo({id,content,created_at,done:false})
       InputActions.initialize()
     }
   }
