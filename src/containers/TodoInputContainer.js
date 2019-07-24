@@ -17,7 +17,8 @@ class TodoInputContainer extends Component {
     const {content} = this.props
     if (content!==""){
       const {ListActions, InputActions} = this.props
-      ListActions.writeTodo({content})
+      const created_at = new Date()
+      ListActions.writeTodo({content,created_at,done:false})
       InputActions.initialize()
     }
   }

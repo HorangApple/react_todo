@@ -19,12 +19,14 @@ const initialState = List([
   Map({
     id: 0,
     done: false,
-    content: "반갑습니다."
+    content: "반갑습니다.",
+    created_at:null
   }),
   Map({
     id: 1,
     done: false,
-    content: "오늘 할 일을 작성해주세요."
+    content: "오늘 할 일을 작성해주세요.",
+    created_at:null
   })
 ]);
 
@@ -33,13 +35,14 @@ export default handleActions(
   {
     [INITIALIZE]: (state, action) => initialState,
     [WRITE_TODO]: (state, action) => {
-      const { content } = action.payload;
+      const { content, done, created_at } = action.payload;
       idx += 1;
       return state.push(
         Map({
           id: idx,
-          done: false,
-          content
+          done,
+          content,
+          created_at
         })
       );
     },

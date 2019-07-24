@@ -1,28 +1,51 @@
-import { takeEvery, all, put  } from 'redux-saga/effects'
-import { login, logout } from 'api/firebaseApi'
+import { takeEvery, all, put, select  } from 'redux-saga/effects'
+import { login, logout, postTodo, getTodo, deleteTodo } from 'api/firebaseApi'
 
-function* accessLogin (){
+const getUserEmail = (state) => (state.login.get('user'))
+
+function* accesslogin (){
   const response = yield login()
-  yield put({type:"login/SAVEUSER", payload:response.user})
+  yield put({type:"login/SAVEUSER", data:response.user})
 }
 
-function* accessLogout(){
+function* accesslogout(){
   yield logout()
-  yield put({type:"login/DELETEUSER"})
+}
+
+function* writeTodo(action){
+  const user = yield select(getUserEmail)
+  const doc = yield postTodo(user)
+  const todoId = doc.id
+  yield doc.set({todoId,...action.payload})
+}
+
+function* removeTodo(action){
+  const user = yield select(getUserEmail)
+  console.log(action.payload)
 }
 
 // watcher
 function* watchLogin() {
-  yield takeEvery('login/LOGIN', accessLogin)
+  yield takeEvery('login/LOGIN', accesslogin)
 }
 
 function* watchLogout() {
-  yield takeEvery('login/LOGOUT', accessLogout)
+  yield takeEvery('login/LOGOUT', accesslogout)
+}
+
+function* watchPostTodo() {
+  yield takeEvery('todoList/WRITE_TODO', writeTodo)
+}
+
+function* watchDeleteTodo() {
+  yield takeEvery('todoList/REMOVE_TODO', removeTodo)
 }
 
 export default function* rootSaga() {
   yield all([
     watchLogin(),
-    watchLogout()
+    watchLogout(),
+    watchPostTodo(),
+    watchDeleteTodo()
   ])
 }
