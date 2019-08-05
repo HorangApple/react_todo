@@ -18,13 +18,19 @@ class TodoInputContainer extends Component {
 
   handleClick = () => {
     const {content} = this.props
-    if (content!==""){
-      const {ListActions, InputActions} = this.props
-      const created_at = new Date()
-      const user = firebase.auth().currentUser.email
-      const id = getTodoId(user).id
-      ListActions.writeTodo({id,content,created_at,done:false})
-      InputActions.initialize()
+    if (localStorage.getItem('user')){
+      if(content!==""){
+        const {ListActions, InputActions} = this.props
+        const created_at = new Date()
+        const user = firebase.auth().currentUser.email
+        const id = getTodoId(user).id
+        ListActions.writeTodo({id,content,created_at,done:false})
+        InputActions.initialize()
+      } else {
+        alert("할 일을 입력해 주세요.")
+      }
+    } else {
+      alert("로그인을 해주세요.")
     }
   }
 

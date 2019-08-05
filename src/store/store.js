@@ -6,6 +6,7 @@ import rootSaga from 'store/sagas'
 import modules from 'store/modules'
 import {setLoginState} from 'api/firebaseApi'
 import * as loginActions from 'store/modules/login'
+import * as todoListActions from 'store/modules/todoList'
 
 const sagaMiddleware = createSagaMiddleware()
 const middlewares = [sagaMiddleware,logger]
@@ -20,6 +21,7 @@ const store = createStore(
 setLoginState((firebaseUser)=>{
   if(firebaseUser){
     store.dispatch(loginActions.saveUser(firebaseUser))
+    store.dispatch(todoListActions.getTodo({user:firebaseUser.email}))
   }
 })
 

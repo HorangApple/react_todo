@@ -19,11 +19,16 @@ const initialState = Map({
 export default handleActions({
   [SAVEUSER]: (state, action) =>{
     const {email,refreshToken,uid} = action.payload
+    localStorage.setItem('user',email)
+    localStorage.setItem('uid',uid)
     return state.set('user',email)
                 .set('token',refreshToken)
                 .set('uid',uid)
   },
   [DELETEUSER]: (state, action)=>{
+    localStorage.removeItem('user')
+    localStorage.removeItem('uid')
+    localStorage.removeItem('todos')
     return state.set('user','')
                 .set('token','')
                 .set('uid','')

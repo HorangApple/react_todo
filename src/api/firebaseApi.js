@@ -13,11 +13,12 @@ const firestore = user =>
     .collection("users")
     .doc(user)
     .collection("todos");
-export const login = () => firebase.auth().signInWithPopup(provider);
+export const login = () => firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+.then(function() {return firebase.auth().signInWithPopup(provider)});
 export const logout = () => firebase.auth().signOut();
 export const setLoginState = func => firebase.auth().onAuthStateChanged(func);
-export const getTodo = user => firestore(user).get();
-export const getTodoId = user => firestore(user).doc();
+export const getTodos = user => firestore(user).get();
+export const getTodoId = user => firestore(user).doc().get();
 export const postTodo = (user,id) => firestore(user).doc(id);
 export const deleteTodo = (user,id) =>
   firestore(user)

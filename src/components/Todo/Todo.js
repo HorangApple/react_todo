@@ -43,7 +43,7 @@ const Delete = styled.button`
 
 const Todo = ({ id, done, content, handleCheck, handleDelete }) => (
   <Body>
-    <CheckBox type="checkbox" id={id} onClick={handleCheck} />
+    <CheckBox type="checkbox" id={id} onChange={handleCheck} checked={done}/>
     <Label htmlFor={id} done={done}>
       {content}
     </Label>
