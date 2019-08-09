@@ -16,14 +16,14 @@ class TodoInputContainer extends Component {
     InputActions.inputTodo({content})
   }
 
-  handleClick = () => {
+  handleClick = async () => {
     const {content} = this.props
     if (localStorage.getItem('user')){
       if(content!==""){
         const {ListActions, InputActions} = this.props
         const created_at = new Date()
         const user = firebase.auth().currentUser.email
-        const id = getTodoId(user).id
+        const id = await getTodoId(user)
         ListActions.writeTodo({id,content,created_at,done:false})
         InputActions.initialize()
       } else {

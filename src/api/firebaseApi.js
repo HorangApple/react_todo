@@ -18,7 +18,7 @@ export const login = () => firebase.auth().setPersistence(firebase.auth.Auth.Per
 export const logout = () => firebase.auth().signOut();
 export const setLoginState = func => firebase.auth().onAuthStateChanged(func);
 export const getTodos = user => firestore(user).get();
-export const getTodoId = user => firestore(user).doc().get();
+export const getTodoId = user => firestore(user).doc().id;
 export const postTodo = (user,id) => firestore(user).doc(id);
 export const deleteTodo = (user,id) =>
   firestore(user)

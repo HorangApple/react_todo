@@ -5,7 +5,7 @@ import shadow from 'style/shadow'
 
 const Btn = styled.button`
   ${shadow(3)}
-  background-color:${props=>props.user===""? '#8e24aa' :'#b71c1c'};
+  background-color:${props=>props.loginCheck ? '#b71c1c' : '#8e24aa'};
   color:white;
   border-width:0;
   padding: 5px 10px 5px 10px;
@@ -14,7 +14,7 @@ const Btn = styled.button`
   transition: 0.2s;
   &:hover {
     cursor: pointer;
-    background-color: ${props=>props.user===""? '#c158dc' :'#f05545'};
+    background-color: ${props=>props.loginCheck ? '#f05545' : '#c158dc'};
     ${shadow(4)}
   }
 
@@ -25,9 +25,10 @@ const Btn = styled.button`
 `
 
 const LoginButton = ({user,clickLogin,clickLogout}) => {
+  const loginCheck = localStorage.getItem('user') !==null || user !=="" ? true : false
   return (
-    <Btn onClick={user==="" ? clickLogin: clickLogout} user={user}>
-      {user===""? '로그인': '로그아웃'}
+    <Btn onClick={ loginCheck ? clickLogout : clickLogin } loginCheck={loginCheck}>
+      { loginCheck ? '로그아웃' : '로그인'}
     </Btn>
   )
 }

@@ -1,5 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
 import { Map, List } from "immutable";
+import { getTodos } from 'api/firebaseApi'
 
 const WRITE_TODO = "todoList/WRITE_TODO";
 const INITIALIZE = "todoList/INITIALIZE";
@@ -16,21 +17,32 @@ export const doneTodo = createAction(DONE_TODO);
 export const getTodo = createAction(GET_TODO);
 export const setTodo = createAction(SET_TODO);
 
-// 초기 상태 정의
-const initialState = List([
-  Map({
-    id: "hi",
-    done: false,
-    content: "반갑습니다.",
-    created_at: null
-  }),
-  Map({
-    id: "niceToMeetYou",
-    done: false,
-    content: "오늘 할 일을 작성해주세요.",
-    created_at: null
-  })
-]);
+const user = localStorage.getItem('user');
+let initialState = List();
+(async (user) => {
+  let todos
+  if (user === null) {
+    todos = [
+      Map({
+        id: "hi",
+        done: false,
+        content: "반갑습니다.",
+        created_at: null
+      }),
+      Map({
+        id: "niceToMeetYou",
+        done: false,
+        content: "오늘 할 일을 작성해주세요.",
+        created_at: null
+      })
+    ]
+  } else {
+    const response = await getTodos(user)
+    let list = response.docs.map(todo=>todo.data())
+    todos = list.map(todo => Map(todo));
+  }
+  initialState = List(todos);
+})(user)
 
 // reducer
 export default handleActions(

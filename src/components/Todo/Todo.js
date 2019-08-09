@@ -9,8 +9,8 @@ const Body = styled.div`
   ${shadow(1)}
   background-color:white;
   margin-top: 10px;
-  height: 2rem;
-  padding: 10px 10px 10px 10px;
+  height: auto;
+  padding: 15px 10px 15px 10px;
   vertical-align: middle;
   overflow: auto;
 `;
@@ -18,12 +18,14 @@ const Body = styled.div`
 const CheckBox = styled.input`
   position: relative;
   top: 0.1rem;
-  margin-top: 0.6rem;
+  margin-top: auto;
+  margin-bottom: auto;
 `;
 
 const Label = styled.label`
   font-size: 1.2rem;
   text-decoration-line: ${props => (props.done ? "line-through" : "none")};
+  word-break:break-all;
 `;
 
 const Delete = styled.button`

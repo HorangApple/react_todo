@@ -25,13 +25,13 @@ function* writeTodo(action){
 function* removeTodo(action){
   const user = yield select(getUserEmail)
   const {id} = action.payload
-  yield deleteTodo(user,id)
+  if(user) yield deleteTodo(user,id)
 }
 
 function* doneTodo(action){
   const user = yield select(getUserEmail)
   const {id} = action.payload
-  yield changeDone(id, user)
+  if(user) yield changeDone(id, user)
 }
 
 function* getTodo(action){
