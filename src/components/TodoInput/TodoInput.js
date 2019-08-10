@@ -5,8 +5,8 @@ import CircleButton from 'components/CircleButton'
 
 const Input = styled.input`
   font-size: 1.2rem;
-  width: 20rem;
-  margin-right: 1rem;
+  width: 65%;
+  margin-right: 5%;
   padding-right: 1rem;
   padding-left: 1rem;
   border-width: 0;
@@ -25,8 +25,8 @@ const Body = styled.div`
 const TodoInput = ({content, handleInput, handleClick}) => {
   return (
     <Body>
-      <Input value={content} onChange={handleInput}/>
-      <CircleButton type="submit" handleClick={handleClick}></CircleButton>
+        <Input value={content} onChange={handleInput}/>
+        <CircleButton type="submit" handleClick={handleClick}></CircleButton>
     </Body>
   )
 }

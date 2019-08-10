@@ -25,6 +25,11 @@ setLoginState((firebaseUser)=>{
   }
 })
 
+window.onunload = function () {
+  localStorage.removeItem('user');
+  localStorage.removeItem('uid')
+}
+
 sagaMiddleware.run(rootSaga)
 
 export default store;

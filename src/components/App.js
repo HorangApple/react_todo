@@ -5,7 +5,8 @@ import {TodoPage} from 'pages'
 
 
 const Body = styled.div`
-  display: relative;
+  margin-left:2rem;
+  margin-right:2rem;
 `
 
 const App = () => {
