@@ -9,16 +9,18 @@ const Btn = styled.button`
   ${shadow(3)}
   background-color:${background};
   text-align: center;
-  display: block;
-  width: 40px;
-  height: 40px;
+  display: inline-block;
+  width: 5vmin;
+  height: 5vmin;
+  line-height:5vmin;
   overflow: hidden;
   border-width: 0;
   outline: none;
   border-radius: 50%;
-  font-size: 30px;
+  font-size: 4vmin;
   color: #ffffff;
   transition: 0.2s;
+  margin-top: auto;
 
   &:hover {
     cursor: pointer;

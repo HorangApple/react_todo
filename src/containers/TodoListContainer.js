@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux'
 import * as listActions from 'store/modules/todoList'
 import TodoList from 'components/TodoList'
 
+
 class TodoListContainer extends Component {
   handleCheck = (e) =>{
     const id = e.target.id
@@ -19,8 +20,9 @@ class TodoListContainer extends Component {
   }
 
   render() {
+    const {list} = this.props
     return (
-      <TodoList list={this.props.list} handleCheck={this.handleCheck} handleDelete={this.handleDelete}/>
+      <TodoList list = {list} handleCheck={this.handleCheck} handleDelete={this.handleDelete}/>
     )
   }
 }
