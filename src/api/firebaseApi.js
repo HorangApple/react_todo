@@ -13,8 +13,7 @@ const firestore = user =>
     .collection("users")
     .doc(user)
     .collection("todos");
-export const login = () => firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-.then(function() {return firebase.auth().signInWithPopup(provider)});
+export const login = () => firebase.auth().signInWithPopup(provider);
 export const logout = () => firebase.auth().signOut();
 export const setLoginState = func => firebase.auth().onAuthStateChanged(func);
 export const getTodos = user => firestore(user).get();

@@ -23,10 +23,10 @@ const Text = styled.h1`
   color: white;
   margin-left: auto;
   margin-right: auto;
-  width: 40vmin;
-  height: 13vmin;
-  line-height: 13vmin;
-  font-size:7vmin;
+  width: 35vmin;
+  height: 10vmin;
+  line-height: 10vmin;
+  font-size: 4vmin;
 `
 const Title = styled.div`
   display:flex;

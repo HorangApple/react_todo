@@ -38,7 +38,8 @@ function* getTodo(action){
   const {user} = action.payload
   const response = yield getTodos(user)
   const list = response.docs.map(todo=>todo.data())
-  const payload = {list}
+  const loading = true
+  const payload = {list,loading}
   yield put({type:"todoList/SET_TODO",payload})
 }
 

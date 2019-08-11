@@ -17,38 +17,37 @@ const Body = styled.div`
   display: flex;
 `;
 
-
 const Label = styled.label`
   position: relative;
-  width:90%;
+  width: 90%;
   padding: 0 0 0 25px;
   font-size: 1rem;
   cursor: pointer;
 
-  input[type="checkbox"]{
+  input[type="checkbox"] {
     display: none;
-  
-    &:checked + span{
+
+    &:checked + span {
       opacity: 1;
     }
   }
-  
-  &::before{
+
+  &::before {
     position: absolute;
-    content: '';
+    content: "";
     left: 0;
     height: 14px;
     width: 14px;
     border-radius: 2px;
-    border: 2px solid #16A085;
+    border: 2px solid #16a085;
     top: 50%;
     transform: translate(0%, -50%);
   }
-  &::after{
-    background-color:black;
+  &::after {
+    background-color: black;
   }
 
-  span{
+  span {
     position: absolute;
     left: -3px;
     width: 12px;
@@ -62,25 +61,25 @@ const Label = styled.label`
     padding-bottom: 0px;
     padding-left: 22px;
 
-    &::before{
+    &::before {
       position: absolute;
-      content: '';
+      content: "";
       left: 11px;
       width: 3px;
       height: 11px;
-      background-color: #16A085;      
+      background-color: #16a085;
     }
-    
-    &::after{
+
+    &::after {
       position: absolute;
-      content: '';
+      content: "";
       top: 8px;
       left: 7px;
       width: 4px;
       height: 3px;
-      background-color: #16A085;
+      background-color: #16a085;
     }
-}
+  }
   font-size: 1.2rem;
   text-decoration-line: ${props => (props.done ? "line-through" : "none")};
   word-break: break-all;
@@ -88,7 +87,7 @@ const Label = styled.label`
 
 const Delete = styled.button`
   position: relative;
-  right:1px;
+  right: 1px;
   border-width: 0;
   overflow: hidden;
   background-color: white;

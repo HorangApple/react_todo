@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import logger from 'redux-logger'
 
@@ -11,11 +11,8 @@ import * as todoListActions from 'store/modules/todoList'
 const sagaMiddleware = createSagaMiddleware()
 const middlewares = [sagaMiddleware,logger]
 
-const isDev = process.env.NODE_ENV === 'development';
-const devtools = isDev && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-
 const store = createStore(
-  modules, compose(applyMiddleware(...middlewares),devtools)
+  modules, applyMiddleware(...middlewares)
 )
 
 setLoginState((firebaseUser)=>{
@@ -25,10 +22,6 @@ setLoginState((firebaseUser)=>{
   }
 })
 
-window.onunload = function () {
-  localStorage.removeItem('user');
-  localStorage.removeItem('uid')
-}
 
 sagaMiddleware.run(rootSaga)
 

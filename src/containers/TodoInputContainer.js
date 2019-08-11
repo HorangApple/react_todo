@@ -6,7 +6,7 @@ import * as inputActions from 'store/modules/todoInput'
 import * as listActions from 'store/modules/todoList'
 import TodoInput from 'components/TodoInput'
 
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import { getTodoId } from 'api/firebaseApi'
 
 class TodoInputContainer extends Component {

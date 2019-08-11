@@ -6,7 +6,7 @@ import CircleButton from 'components/CircleButton'
 const Input = styled.input`
   font-size: 1.2rem;
   width: 65%;
-  margin-right: 5%;
+  margin-right: 2vmin;
   padding-right: 1rem;
   padding-left: 1rem;
   border-width: 0;
